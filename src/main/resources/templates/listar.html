@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listar Computadoras</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .add-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .add-button a {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .add-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<h1>Listado de computadoras</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Marca</th>
+    <th>Modelo</th>
+    <th>Procesador Marca</th>
+    <th>Procesador Velocidad</th>
+    <th>Procesador Generación</th>
+    <th>RAM Tipo</th>
+    <th>RAM Capacidad</th>
+    <th>Disco Duro Tipo</th>
+    <th>Disco Duro Capacidad</th>
+    <th>Tarjeta Gráfica Marca</th>
+    <th>Tarjeta Gráfica Capacidad</th>
+    <th>Acciones</th>
+  </tr>
+  <tr th:each="computadora: ${listaComputadoras}">
+    <td th:text="${computadora.id}"></td>
+    <td th:text="${computadora.marca}"></td>
+    <td th:text="${computadora.modelo}"></td>
+    <td th:text="${computadora.procesadorMarca}"></td>
+    <td th:text="${computadora.procesadorVelocidad}"></td>
+    <td th:text="${computadora.procesadorGeneracion}"></td>
+    <td th:text="${computadora.ramTipo}"></td>
+    <td th:text="${computadora.ramCapacidad}"></td>
+    <td th:text="${computadora.discoDuroTipo}"></td>
+    <td th:text="${computadora.discoDuroCapacidad}"></td>
+    <td th:text="${computadora.GraficaMarca}"></td>
+    <td th:text="${computadora.GraficaCapacidad}"></td>
+    <td>
+      <a th:href="@{/computadoras/editar/{id}(id=${computadora.id})}">Editar</a>
+      <a th:href="@{/computadoras/eliminar/{id}(id=${computadora.id})}">Eliminar</a>
+    </td>
+  </tr>
+</table>
+<div class="add-button">
+  <a href="/computadoras/nueva">Nueva Computadora</a>
+</div>
+</body>
+</html>

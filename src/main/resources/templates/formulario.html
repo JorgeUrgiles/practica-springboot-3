@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de computadoras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      color: #444;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: calc(100% - 10px);
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      display: block;
+      margin-top: 10px;
+      text-align: center;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.8em;
+    }
+  </style>
+</head>
+<body>
+<h1>Formulario de computadoras</h1>
+<form th:object="${computadora}" th:action="${accion}" method="post">
+  <input type="hidden" th:field="*{id}">
+
+  <label>Marca: <input type="text" th:field="*{marca}"></label><br>
+  <small th:if="${#fields.hasErrors('marca')}" th:errors="*{marca}" class="error"></small><br>
+
+  <label>Modelo: <input type="text" th:field="*{modelo}"></label><br>
+  <small th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}" class="error"></small><br>
+
+  <label>Procesador Marca: <input type="text" th:field="*{procesadorMarca}"></label><br>
+  <small th:if="${#fields.hasErrors('procesadorMarca')}" th:errors="*{procesadorMarca}" class="error"></small><br>
+
+  <label>Procesador Velocidad: <input type="text" th:field="*{procesadorVelocidad}"></label><br>
+  <small th:if="${#fields.hasErrors('procesadorVelocidad')}" th:errors="*{procesadorVelocidad}" class="error"></small><br>
+
+  <label>Procesador Generacion: <input type="text" th:field="*{procesadorGeneracion}"></label><br>
+  <small th:if="${#fields.hasErrors('procesadorGeneracion')}" th:errors="*{procesadorGeneracion}" class="error"></small><br>
+
+  <label>RAM Tipo: <input type="text" th:field="*{ramTipo}"></label><br>
+  <small th:if="${#fields.hasErrors('ramTipo')}" th:errors="*{ramTipo}" class="error"></small><br>
+
+  <label>RAM Capacidad: <input type="text" th:field="*{ramCapacidad}"></label><br>
+  <small th:if="${#fields.hasErrors('ramCapacidad')}" th:errors="*{ramCapacidad}" class="error"></small><br>
+
+  <label>Disco Duro Tipo: <input type="text" th:field="*{discoDuroTipo}"></label><br>
+  <small th:if="${#fields.hasErrors('discoDuroTipo')}" th:errors="*{discoDuroTipo}" class="error"></small><br>
+
+  <label>Disco Duro Capacidad: <input type="text" th:field="*{discoDuroCapacidad}"></label><br>
+  <small th:if="${#fields.hasErrors('discoDuroCapacidad')}" th:errors="*{discoDuroCapacidad}" class="error"></small><br>
+
+  <label>Tarjeta Grafica Marca: <input type="text" th:field="*{GraficaMarca}"></label><br>
+  <small th:if="${#fields.hasErrors('GraficaMarca')}" th:errors="*{GraficaMarca}" class="error"></small><br>
+
+  <label>Tarjeta Grafica Capacidad: <input type="text" th:field="*{GraficaCapacidad}"></label><br>
+  <small th:if="${#fields.hasErrors('GraficaCapacidad')}" th:errors="*{GraficaCapacidad}" class="error"></small><br>
+
+  <button type="submit">Guardar</button>
+</form>
+<a href="/computadoras">Volver al listado de computadoras</a>
+</body>
+</html>
